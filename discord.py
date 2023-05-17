@@ -24,9 +24,7 @@ def post_to_discord(title, url, profile_image):
 
 if __name__ == '__main__':
 #  schedule.every().day.at("11:00").do(main)
- schedule.every(20).seconds.do(job)  
-
-
+    schedule.every(20).seconds.do(job)  
     params = {
         'tagged': 'cnosdb',
         'sort': 'creation',
