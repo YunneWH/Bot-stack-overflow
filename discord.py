@@ -2,6 +2,7 @@ import os
 import duckdb 
 import json
 import requests
+import schedule
 
 DISCORD_WEBHOOK_URL = os.environ.get('DISCORD_WEBHOOK_URL')
 STACK_OVERFLOW_API_URL = 'https://api.stackexchange.com/2.3/questions'
@@ -22,6 +23,10 @@ def post_to_discord(title, url, profile_image):
         print(response.status_code)
 
 if __name__ == '__main__':
+#  schedule.every().day.at("11:00").do(main)
+ schedule.every(20).seconds.do(job)  
+
+
     params = {
         'tagged': 'cnosdb',
         'sort': 'creation',
