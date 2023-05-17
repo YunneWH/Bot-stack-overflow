@@ -23,10 +23,10 @@ def post_to_discord(title, url, profile_image):
 
 if __name__ == '__main__':
     params = {
-        'tagged': 'duckdb',
+        'tagged': 'cnosdb',
         'sort': 'creation',
         'order': 'desc',
-        'site': 'stackoverflow'
+        'site': 'stackoverflow11'
     }
     response = requests.get(STACK_OVERFLOW_API_URL, params=params)
 
