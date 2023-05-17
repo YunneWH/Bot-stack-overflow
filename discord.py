@@ -73,10 +73,14 @@ current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
 
 # current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"Job started at {current_time}")
+print(f"11")
+
 # 使用schedule库设置每20秒执行一次的定时任务
 # schedule.every(20).seconds.do(job)
 # 使用schedule库设置每天11点执行一次的定时任务
 schedule.every().day.at("23:00").do(job)
+
+print(f"22")
 
 while True:
     schedule.run_pending()
