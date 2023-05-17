@@ -4,6 +4,7 @@ import json
 import requests
 import schedule
 import time
+from datetime import datetime
 
 DISCORD_WEBHOOK_URL = os.environ.get('DISCORD_WEBHOOK_URL')
 STACK_OVERFLOW_API_URL = 'https://api.stackexchange.com/2.3/questions'
@@ -62,6 +63,8 @@ def job():
     else:
         print(f'Request failed with status code {response.status_code}')
 
+current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print(f"Job started at {current_time}")
 # 使用schedule库设置每20秒执行一次的定时任务
 # schedule.every(20).seconds.do(job)
 # 使用schedule库设置每天11点执行一次的定时任务
