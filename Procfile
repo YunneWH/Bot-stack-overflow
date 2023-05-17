@@ -1,1 +1,1 @@
-web: python .py
+web: python discord.py
