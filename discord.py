@@ -8,7 +8,7 @@ STACK_OVERFLOW_API_URL = 'https://api.stackexchange.com/2.3/questions'
 
 def post_to_discord(title, url, profile_image):
     payload = {
-        "username": "Stack Overflow",
+        "username": "CC from Stack Overflow",
         "embeds": [
             {
                 "title": title,
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         'tagged': 'cnosdb',
         'sort': 'creation',
         'order': 'desc',
-        'site': 'stackoverflow11'
+        'site': 'stackoverflow'
     }
     response = requests.get(STACK_OVERFLOW_API_URL, params=params)
 
