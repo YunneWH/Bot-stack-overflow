@@ -80,7 +80,7 @@ print(f"11")
 # 使用schedule库设置每20秒执行一次的定时任务
 # schedule.every(20).seconds.do(job)
 # 使用schedule库设置每天11点执行一次的定时任务
-schedule.every().day.at("15:17").do(job)
+schedule.every().day.at("03:00").do(job)
 
 print(f"22")
 
