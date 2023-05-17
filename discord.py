@@ -8,9 +8,9 @@ from datetime import datetime
 from pytz import timezone
 
 
-china_tz = timezone('Asia/Shanghai')
-current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
-print(f"Job started at {current_time}")
+# china_tz = timezone('Asia/Shanghai')
+# current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
+# print(f"Job started at {current_time}")
 
 
 DISCORD_WEBHOOK_URL = os.environ.get('DISCORD_WEBHOOK_URL')
@@ -32,7 +32,7 @@ def post_to_discord(title, url, profile_image):
         print(response.status_code)
 
 def job():
-    current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
+#     current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
     params = {
         'tagged': 'cnosdb',
         'sort': 'creation',
@@ -71,9 +71,9 @@ def job():
     else:
         print(f'Request failed with status code {response.status_code}')
 
-current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
+# current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
 
-# current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"Job started at {current_time}")
 print(f"11")
 
