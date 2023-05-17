@@ -9,6 +9,8 @@ from pytz import timezone
 
 
 china_tz = timezone('Asia/Shanghai')
+current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
+print(f"Job started at {current_time}")
 
 
 DISCORD_WEBHOOK_URL = os.environ.get('DISCORD_WEBHOOK_URL')
@@ -78,7 +80,7 @@ print(f"11")
 # 使用schedule库设置每20秒执行一次的定时任务
 # schedule.every(20).seconds.do(job)
 # 使用schedule库设置每天11点执行一次的定时任务
-schedule.every().day.at("23:00").do(job)
+schedule.every().day.at("23:12").do(job)
 
 print(f"22")
 
