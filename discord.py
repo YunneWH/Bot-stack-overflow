@@ -76,7 +76,7 @@ print(f"Job started at {current_time}")
 # 使用schedule库设置每20秒执行一次的定时任务
 # schedule.every(20).seconds.do(job)
 # 使用schedule库设置每天11点执行一次的定时任务
-schedule.every().day.at("22:54").do(job)
+schedule.every().day.at("23:00").do(job)
 
 while True:
     schedule.run_pending()
