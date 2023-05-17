@@ -63,7 +63,9 @@ def job():
         print(f'Request failed with status code {response.status_code}')
 
 # 使用schedule库设置每20秒执行一次的定时任务
-schedule.every(20).seconds.do(job)
+# schedule.every(20).seconds.do(job)
+# 使用schedule库设置每天11点执行一次的定时任务
+schedule.every().day.at("11:00").do(job)
 
 while True:
     schedule.run_pending()
