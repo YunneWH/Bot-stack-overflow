@@ -1,8 +1,9 @@
 import os
-import duckdb 
+import duckdb
 import json
 import requests
 import schedule
+import time
 
 DISCORD_WEBHOOK_URL = os.environ.get('DISCORD_WEBHOOK_URL')
 STACK_OVERFLOW_API_URL = 'https://api.stackexchange.com/2.3/questions'
@@ -22,9 +23,7 @@ def post_to_discord(title, url, profile_image):
     with requests.post(DISCORD_WEBHOOK_URL, json=payload) as response:
         print(response.status_code)
 
-if __name__ == '__main__':
-#  schedule.every().day.at("11:00").do(main)
-    schedule.every(20).seconds.do(main)  
+def job():
     params = {
         'tagged': 'cnosdb',
         'sort': 'creation',
@@ -41,15 +40,15 @@ if __name__ == '__main__':
                 f.write(json.dumps(item) + '\n')
 
         duckdb.sql('''
-                CREATE OR REPLACE TABLE SO AS 
-                SELECT * FROM read_ndjson_auto('./so.json')
-                ORDER BY creation_date DESC
-                Limit 30
+            CREATE OR REPLACE TABLE SO AS 
+            SELECT * FROM read_ndjson_auto('./so.json')
+            ORDER BY creation_date DESC
+            Limit 30
         ''')
 
         new_duckdb_questions = duckdb.sql('''
             SELECT title, link, owner.profile_image,
-                TO_TIMESTAMP(creation_date::BIGINT) create_time,
+                TO_TIMESTAMP(creation_date::BIGINT) create_time
             FROM SO 
             WHERE create_time > NOW() - INTERVAL 7 DAY
             LIMIT 5
@@ -63,3 +62,9 @@ if __name__ == '__main__':
     else:
         print(f'Request failed with status code {response.status_code}')
 
+# 使用schedule库设置每20秒执行一次的定时任务
+schedule.every(20).seconds.do(job)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
