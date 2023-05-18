@@ -16,6 +16,9 @@ from pytz import timezone
 DISCORD_WEBHOOK_URL = os.environ.get('DISCORD_WEBHOOK_URL')
 STACK_OVERFLOW_API_URL = 'https://api.stackexchange.com/2.3/questions'
 
+# 存储已发送的标题
+sent_titles = set()
+
 def post_to_discord(title, url, profile_image):
     payload = {
         "username": "CC from Stack Overflow",
@@ -65,8 +68,13 @@ def job():
 
         new_duckdb_questions.project('title, create_time').show()
 
+#         for title, link, image, _ in new_duckdb_questions.fetchall():
+#             post_to_discord(title, link, image)
+            
         for title, link, image, _ in new_duckdb_questions.fetchall():
-            post_to_discord(title, link, image)
+            if title not in sent_titles:  # 检查标题是否已发送过
+                post_to_discord(title, link, image)
+                sent_titles.add(title)  # 将标题添加到已发送集合中
 
     else:
         print(f'Request failed with status code {response.status_code}')
@@ -78,9 +86,9 @@ print(f"Job started at {current_time}")
 print(f"11")
 
 # 使用schedule库设置每20秒执行一次的定时任务
-# schedule.every(20).seconds.do(job)
+schedule.every(20).seconds.do(job)
 # 使用schedule库设置每天11点执行一次的定时任务
-schedule.every().day.at("03:00").do(job)
+# schedule.every().day.at("03:00").do(job)
 
 print(f"22")
 
