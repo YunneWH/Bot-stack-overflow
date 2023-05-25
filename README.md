@@ -5,6 +5,7 @@ tags:
   - python
   - discord.py
   - 测试啦！！！！
+  - 哈哈哈
 ---
 
 # Discord.py Example
