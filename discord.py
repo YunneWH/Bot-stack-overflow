@@ -36,6 +36,7 @@ def post_to_discord(title, url, profile_image):
 
 def job():
 #     current_time = datetime.now(china_tz).strftime("%Y-%m-%d %H:%M:%S")
+    global sent_titles  # 声明为全局变量
     params = {
         'tagged': 'cnosdb',
         'sort': 'creation',
