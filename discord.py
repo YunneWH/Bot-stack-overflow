@@ -59,21 +59,21 @@ def job():
             Limit 30
         ''')
 
-#         new_duckdb_questions = duckdb.sql('''
-#             SELECT title, link, owner.profile_image,
-#                 TO_TIMESTAMP(creation_date::BIGINT) create_time
-#             FROM SO 
-#             WHERE create_time > NOW() - INTERVAL 7 DAY
-#             LIMIT 5
-#         ''')
-
         new_duckdb_questions = duckdb.sql('''
             SELECT title, link, owner.profile_image,
                 TO_TIMESTAMP(creation_date::BIGINT) create_time
             FROM SO 
-            WHERE create_time > NOW() - INTERVAL 10 DAY
-            LIMIT 10
+            WHERE create_time > NOW() - INTERVAL 7 DAY
+            LIMIT 5
         ''')
+
+#         new_duckdb_questions = duckdb.sql('''
+#             SELECT title, link, owner.profile_image,
+#                 TO_TIMESTAMP(creation_date::BIGINT) create_time
+#             FROM SO 
+#             WHERE create_time > NOW() - INTERVAL 10 DAY
+#             LIMIT 10
+#         ''')
 
 
         new_duckdb_questions.project('title, create_time').show()
