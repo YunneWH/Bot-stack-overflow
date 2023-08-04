@@ -4,8 +4,6 @@ description: A Discord bot written in Python
 tags:
   - python
   - discord.py
-  - 测试啦！！！！
-  - 哈哈哈
 ---
 
 # Discord.py Example
@@ -22,7 +20,7 @@ This example starts a Discord bot using [discord.py](https://discordpy.readthedo
 ## 💁‍♀️ How to use
 
 - Install packages using `pip install -r requirements.txt`
-- Start the bot using `python main.py`
+- Start the bot using `python discord.py`
 
 ## 📝 Notes
 
