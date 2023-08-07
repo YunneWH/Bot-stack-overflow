@@ -14,7 +14,7 @@ This example starts a Discord bot using [discord.py](https://discordpy.readthedo
 
 ## ✨ Features
 
-- Python
+- Python >= 3.8
 - Discord.py
 
 ## 💁‍♀️ How to use
